@@ -22,7 +22,7 @@ module.exports = (filepath, req, res) => {
 
   stream.on('end', () => {
     fs.unlink(filepath, (error) => console.log(error));
-    res.statusCode = 201;
+    res.statusCode = 200;
     res.end('File succesfully removed');
   });
 
