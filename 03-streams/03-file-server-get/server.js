@@ -1,6 +1,6 @@
-const url = require('url');
 const http = require('http');
 const path = require('path');
+const readFile = require('./readFile');
 
 const server = new http.Server();
 
@@ -10,9 +10,15 @@ server.on('request', (req, res) => {
 
   const filepath = path.join(__dirname, 'files', pathname);
 
+  if (pathname.includes('/')) {
+    res.statusCode = 400;
+    res.end('Nested paths are not allowed');
+    return;
+  }
+
   switch (req.method) {
     case 'GET':
-
+      readFile(filepath, req, res);
       break;
 
     default:
