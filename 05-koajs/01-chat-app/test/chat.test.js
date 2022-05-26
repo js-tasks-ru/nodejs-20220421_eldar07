@@ -13,7 +13,6 @@ describe('koajs/chat-app', () => {
 
     after((done) => {
       server.close(done);
-      done();
     });
 
     describe('POST /publish', () => {
