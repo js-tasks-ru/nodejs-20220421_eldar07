@@ -13,7 +13,6 @@ describe('koajs/chat-app', () => {
 
     after((done) => {
       server.close(done);
-      done();
     });
 
     describe('POST /publish', () => {
@@ -37,7 +36,7 @@ describe('koajs/chat-app', () => {
 
         const messages = await subscribers;
 
-        messages.forEach((response) => {
+        messages.forEach(response => {
           expect(response.data, 'каждый подписчик должен получить исходное сообщение').to.equal(message);
         });
       });
@@ -68,7 +67,7 @@ describe('koajs/chat-app', () => {
 
         const messages = await subscribers;
 
-        messages.forEach((response) => {
+        messages.forEach(response => {
           expect(response.data, 'каждый подписчик должен получить исходное сообщение').to.equal(message);
         });
       });
