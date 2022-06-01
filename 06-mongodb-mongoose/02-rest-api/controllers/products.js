@@ -41,4 +41,3 @@ module.exports.productById = async function productById(ctx, next) {
     return next();
   }
 };
-
