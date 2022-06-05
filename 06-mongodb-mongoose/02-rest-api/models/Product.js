@@ -26,10 +26,20 @@ const productSchema = new mongoose.Schema({
   subcategory: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
+    index: true,
   },
 
   images: [String],
-
+},
+{
+  versionKey: false,
+  toJSON: {
+    transform: function(doc, ret, options) {
+      ret.id = ret._id;
+      delete ret._id;
+      return ret;
+    },
+  },
 });
 
 module.exports = connection.model('Product', productSchema);
