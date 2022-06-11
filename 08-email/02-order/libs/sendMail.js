@@ -11,7 +11,7 @@ const StubTransport = require('nodemailer-stub-transport');
 const transportEngine = process.env.NODE_ENV === 'test' ?
   new StubTransport() :
   new SMTPTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp.yandex.ru',
     port: 465,
     secure: true,
     auth: {
@@ -47,6 +47,7 @@ module.exports = async function sendMail(options) {
 
   const message = {
     html: juice(html),
+    from: 'eldar@mygang.ru',
     to: {
       address: options.to,
     },
