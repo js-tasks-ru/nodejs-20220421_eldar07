@@ -48,6 +48,7 @@ module.exports = async function sendMail(options) {
 
   const message = {
     html: juice(html),
+    from: '',
     to: {
       address: options.to,
     },
